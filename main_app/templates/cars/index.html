@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Car List</h1>
+
+{% for car in cars %}
+    <div class="card">
+        <a href="{% url 'detail' car.id %}">
+            <div class="card-content">
+                <!-- How can we join the multiple sets of brackets ? -->
+                <span class="card-title">{{ car.make }} {{ car.model }}</span>
+                <p>Year: {{ car.year }}</p>
+                {% if car.mileage < 200000 %}
+                    <p>Mileage: {{ car.mileage }}</p>
+                {% else %}
+                    <p>Mileage: High Mileage!</p>
+                {% endif %}
+            </div>
+        </a>
+    </div>
+{% empty %}
+    <hr />
+    <h4 class="red-text">No Cars Collected</h4>
+{% endfor %}
+
+{% endblock %}

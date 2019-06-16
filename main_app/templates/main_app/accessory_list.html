@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Accessory List</h1>
+
+<!-- Utilize accessory_list & wrap in anchor tags -->
+{% for accessory in accessory_list %}
+	<a href="{% url 'accessories_detail' accessory.id %}">
+		<div class="card">
+        	<div class="card-content">
+            	<span class="card-title">{{ accessory.name }}</span>
+            	<p>Color: {{ accessory.color }}</p>
+        	</div>
+    	</div>
+  	</a>
+{% empty %}
+	<h4 class="red-text">No Accessories Added</h4>
+{% endfor %}
+
+{% endblock %}
